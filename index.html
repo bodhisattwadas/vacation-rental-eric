@@ -586,6 +586,68 @@
     </div>
   </div>
 
+  <!-- Floating Proposal Badge Widget (Bottom Left) -->
+  <div class="floating-proposal-trigger" onclick="openProposalModal()" title="View Proposal for Client ERIC">
+    <div class="proposal-pill-icon">📋</div>
+    <div>
+      <div class="proposal-pill-title">Proposal for Eric</div>
+      <div class="proposal-pill-sub">$400 • 5 Days Delivery</div>
+    </div>
+  </div>
+
+  <!-- Project Proposal & Budget Modal for Client ERIC -->
+  <div class="modal-backdrop active" id="proposalModal">
+    <div class="modal-box" style="max-width: 700px; padding: 2.5rem;">
+      <span class="modal-close" onclick="closeProposalModal()">&times;</span>
+      
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <span class="badge-gold" style="font-size: 0.85rem;">📋 OFFICIAL PROJECT PROPOSAL</span>
+          <h2 style="font-size: 1.8rem; margin-top: 0.4rem; color: var(--text-primary);">Website Proposal for Client: <span style="color: var(--brand-accent);">ERIC</span></h2>
+        </div>
+        <div style="text-align: right; background: var(--brand-light); padding: 0.6rem 1.25rem; border-radius: 12px;">
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--brand-accent); font-family: var(--font-heading);">$400 USD</div>
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--brand-accent);">⚡ 5-Day Delivery</div>
+        </div>
+      </div>
+
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; background: var(--bg-secondary); padding: 1rem; border-radius: 10px; border-left: 4px solid var(--brand-accent);">
+        <strong>Project Purpose:</strong> A lightweight, high-converting home rental showcase site built for <strong>ERIC</strong> to generate direct bookings from friends, family, and repeat guests alongside his current Airbnb listing, eliminating third-party platform fees.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+        <div style="background: var(--bg-primary); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-color);">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--brand-accent);">🎯 Deliverables & Features</h4>
+          <ul style="font-size: 0.85rem; color: var(--text-secondary); padding-left: 1.2rem; line-height: 1.7;">
+            <li>High-Res 8K Photo Gallery & Lightbox</li>
+            <li>Airbnb iCal + Google Calendar Live Sync</li>
+            <li>Direct Rates & Instant Price Estimator</li>
+            <li>Friends & Family Promo Code Engine</li>
+            <li>Nearby Places of Interest Guide (Distances)</li>
+            <li>WhatsApp & Email Direct Booking Request</li>
+          </ul>
+        </div>
+
+        <div style="background: var(--bg-primary); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-color);">
+          <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--brand-accent);">💰 Budget & Cost Guarantee</h4>
+          <ul style="font-size: 0.85rem; color: var(--text-secondary); padding-left: 1.2rem; line-height: 1.7;">
+            <li><strong>Design & Dev Fee:</strong> $400 (Fixed Price)</li>
+            <li><strong>Timeline:</strong> 5 Calendar Days</li>
+            <li><strong>Hosting Cost:</strong> $0 / month (Vercel Free Tier)</li>
+            <li><strong>Calendar API Cost:</strong> $0 (iCal Feed Sync)</li>
+            <li><strong>SaaS Subscription Fees:</strong> $0 / month</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+        <button onclick="closeProposalModal()" class="btn-primary" style="padding: 0.75rem 1.75rem;">
+          ✨ Explore Live Website Preview
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript -->
   <script src="app.js"></script>
 </body>

@@ -394,6 +394,17 @@ function closeICalGuideModal() {
   document.getElementById('icalGuideModal').classList.remove('active');
 }
 
+// Client Proposal Modal Handler (Eric)
+function openProposalModal() {
+  const modal = document.getElementById('proposalModal');
+  if (modal) modal.classList.add('active');
+}
+
+function closeProposalModal() {
+  const modal = document.getElementById('proposalModal');
+  if (modal) modal.classList.remove('active');
+}
+
 // Attractions Map Pin Interaction
 function initAttractions() {
   // Can expand with interactive map pin toggles
