@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Pinecrest Haven Villa & Retreat | Direct Bookings & Airbnb Rental Showcase</title>
+  <meta name="description" content="Official direct booking website for Pinecrest Haven Villa. Save Airbnb fees, view live availability calendar synced with Airbnb, high-res photos, local guide & direct host inquiries.">
+  <meta name="keywords" content="vacation rental, direct booking, airbnb host website, mountain villa, rental showcase, local guide, availability calendar">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pinecrest Haven Villa & Retreat | Direct Bookings">
+  <meta property="og:description" content="Book direct with family & friends. Live Airbnb calendar sync, zero guest service fees, 8K photo gallery & local guide.">
+  <meta property="og:image" content="images/hero.jpg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org Structured Data for Vacation Rental -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VacationRental",
+    "name": "Pinecrest Haven Villa & Retreat",
+    "description": "Luxury 4-bedroom mountain villa available for direct bookings, friends, family & repeat guests.",
+    "image": ["images/hero.jpg", "images/living.jpg", "images/bedroom.jpg"],
+    "containsPlace": {
+      "@type": "Accommodation",
+      "numberOfRooms": 4,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 8
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.98",
+      "reviewCount": 42
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar" id="navbar">
+        <a href="#" class="logo">
+          <div class="logo-icon">🌲</div>
+          <span>Pinecrest Haven</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#about" class="active">Overview</a></li>
+          <li><a href="#gallery">Photos</a></li>
+          <li><a href="#availability">Live Calendar</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#guide">Nearby Guide</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme">🌙</button>
+          <a href="#availability" class="btn-primary">
+            <span>📅</span> Direct Booking
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-group">
+            <span class="direct-save-pill">✨ Direct Booking Rates Available</span>
+            <span class="badge-gold">★ 4.98 Airbnb Superhost</span>
+          </div>
+
+          <h1 class="hero-title">
+            Your Private Mountain <span>Haven & Villa</span>
+          </h1>
+
+          <p class="hero-description">
+            Welcome friends, family, and valued guests! Book direct to skip third-party platform service fees, lock in guaranteed availability, and enjoy customized stay perks.
+          </p>
+
+          <!-- Quick Stats Bar -->
+          <div class="quick-stats">
+            <div class="stat-item">
+              <div class="num">4</div>
+              <div class="label">Bedrooms</div>
+            </div>
+            <div class="stat-item">
+              <div class="num">3.5</div>
+              <div class="label">Bathrooms</div>
+            </div>
+            <div class="stat-item">
+              <div class="num">8</div>
+              <div class="label">Max Guests</div>
+            </div>
+            <div class="stat-item">
+              <div class="num">2,800</div>
+              <div class="label">Sq Ft Space</div>
+            </div>
+          </div>
+
+          <!-- Quick Date Finder Bar -->
+          <div class="search-bar-widget">
+            <div class="search-field">
+              <label>Check-in</label>
+              <input type="date" id="heroCheckIn" onchange="syncHeroDate('checkin', this.value)">
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-field">
+              <label>Check-out</label>
+              <input type="date" id="heroCheckOut" onchange="syncHeroDate('checkout', this.value)">
+            </div>
+            <div class="search-divider"></div>
+            <a href="#availability" class="btn-primary" style="padding: 0.8rem 1.2rem;">
+              Check Rates
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper">
+          <img src="images/hero.jpg" alt="Pinecrest Haven Villa Exterior & Pool" class="hero-image">
+          <div class="hero-overlay-card">
+            <div class="host-avatar-group">
+              <div class="avatar">PH</div>
+              <div>
+                <h4 style="font-size: 0.95rem; margin-bottom: 0.1rem;">Hosted by Sarah & Marcus</h4>
+                <p style="font-size: 0.8rem; color: var(--text-secondary);">Airbnb Superhost • Quick Responses</p>
+              </div>
+            </div>
+            <span class="sync-status-badge">
+              <span class="sync-dot"></span> Live Sync
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Section -->
+  <section class="section-padding" id="gallery" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="section-tag">High-Resolution Showcase</span>
+        <h2 class="section-title">Explore The Villa</h2>
+        <p class="section-subtitle" style="margin: 0 auto 2rem;">Take a virtual walkthrough of our architecturally designed home, luxury outdoor patio, and gourmet kitchen.</p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="gallery-filter">
+        <button class="filter-btn active" onclick="filterGallery('all', this)">All Photos</button>
+        <button class="filter-btn" onclick="filterGallery('living', this)">Living Space</button>
+        <button class="filter-btn" onclick="filterGallery('bedrooms', this)">Bedrooms</button>
+        <button class="filter-btn" onclick="filterGallery('kitchen', this)">Gourmet Kitchen</button>
+        <button class="filter-btn" onclick="filterGallery('outdoor', this)">Outdoor & Pool</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Rendered via app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Airbnb iCal Calendar Sync & Direct Booking Section -->
+  <section class="section-padding" id="availability">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-tag">Real-Time Availability</span>
+        <h2 class="section-title">Live Airbnb Calendar & Direct Quote</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Our calendar synchronizes live with Airbnb via iCal feed. Dates marked red are reserved; green dates are open for direct booking.</p>
+      </div>
+
+      <div class="availability-layout">
+        <!-- Calendar Card -->
+        <div class="calendar-card">
+          <div class="calendar-header">
+            <div class="calendar-header-title">
+              <h3 id="calendarMonthTitle">August 2026</h3>
+              <span class="sync-status-badge" title="Synced via Airbnb iCal API Feed">
+                <span class="sync-dot"></span> iCal Synced
+              </span>
+            </div>
+            <div>
+              <button onclick="changeMonth(-1)" class="btn-secondary" style="padding: 0.4rem 0.8rem; border-radius: 8px;">◀</button>
+              <button onclick="changeMonth(1)" class="btn-secondary" style="padding: 0.4rem 0.8rem; border-radius: 8px;">▶</button>
+            </div>
+          </div>
+
+          <!-- Days Header -->
+          <div class="calendar-grid">
+            <div class="cal-day-header">Sun</div>
+            <div class="cal-day-header">Mon</div>
+            <div class="cal-day-header">Tue</div>
+            <div class="cal-day-header">Wed</div>
+            <div class="cal-day-header">Thu</div>
+            <div class="cal-day-header">Fri</div>
+            <div class="cal-day-header">Sat</div>
+          </div>
+
+          <!-- Days Grid -->
+          <div class="calendar-grid" id="calendarDays">
+            <!-- Rendered via app.js -->
+          </div>
+
+          <div class="calendar-legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background: var(--status-available);"></div>
+              <span>Available Date</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: var(--status-booked);"></div>
+              <span>Booked on Airbnb</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background: var(--brand-accent);"></div>
+              <span>Your Selection</span>
+            </div>
+
+            <button onclick="openICalGuideModal()" style="margin-left: auto; font-size: 0.8rem; text-decoration: underline; color: var(--brand-accent); font-weight: 600;">
+              ⚙️ How Calendar Sync Works
+            </button>
+          </div>
+        </div>
+
+        <!-- Direct Booking & Pricing Estimator Panel -->
+        <div class="booking-panel">
+          <div class="price-header">
+            <div class="price-amount">$260</div>
+            <div class="price-unit">/ night (Standard Direct Rate)</div>
+          </div>
+
+          <form onsubmit="handleBookingSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Check-in Date</label>
+                <input type="date" id="inputCheckIn" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Check-out Date</label>
+                <input type="date" id="inputCheckOut" class="form-control" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Number of Guests</label>
+              <select id="inputGuests" class="form-control">
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="4" selected>4 Guests</option>
+                <option value="6">6 Guests</option>
+                <option value="8">8 Guests (Max)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Promo / Friends & Family Code</label>
+              <div class="promo-row">
+                <input type="text" id="promoInput" class="form-control" placeholder="e.g. FAMILY2026 or FRIENDS10">
+                <button type="button" onclick="applyPromoCode()" class="btn-secondary" style="padding: 0.5rem 1rem;">Apply</button>
+              </div>
+              <p id="promoMessage" style="font-size: 0.8rem; margin-top: 0.3rem;"></p>
+            </div>
+
+            <!-- Cost Breakdown -->
+            <div class="cost-breakdown">
+              <div class="cost-row">
+                <span id="nightsCount">0 nights × $260</span>
+                <span id="baseTotal">$0</span>
+              </div>
+              <div class="cost-row discount" id="discountRow" style="display: none;">
+                <span>Friends & Family Discount</span>
+                <span id="discountAmount">-$0</span>
+              </div>
+              <div class="cost-row">
+                <span>Cleaning & Sanitization Fee</span>
+                <span>$150</span>
+              </div>
+              <div class="cost-row total">
+                <span>Total Stay Estimate</span>
+                <span id="grandTotal">$0</span>
+              </div>
+            </div>
+
+            <div class="savings-banner" id="airbnbSavings">
+              🎉 Save ~$75+ in Airbnb guest fees by booking direct!
+            </div>
+
+            <!-- Guest Contact Form -->
+            <div class="form-group">
+              <label>Your Full Name</label>
+              <input type="text" id="guestName" class="form-control" placeholder="Jane Doe" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="guestEmail" class="form-control" placeholder="jane@example.com" required>
+              </div>
+              <div class="form-group">
+                <label>Phone / WhatsApp</label>
+                <input type="tel" id="guestPhone" class="form-control" placeholder="+1 (555) 000-0000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Special Requests or Message</label>
+              <textarea id="guestNotes" class="form-control" rows="2" placeholder="Let us know if you're coming for a birthday, family trip, etc."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 1rem; font-size: 1.05rem;">
+              📩 Request Direct Reservation
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Section -->
+  <section class="section-padding" id="amenities" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="section-tag">Thoughtful Details</span>
+        <h2 class="section-title">Property Amenities</h2>
+        <p class="section-subtitle" style="margin: 0 auto 3rem;">Everything you need for a relaxing work retreat, family vacation, or weekend getaway.</p>
+      </div>
+
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <div class="amenity-icon">🌐</div>
+          <h4 class="amenity-title">Gigabit Fiber Wi-Fi</h4>
+          <p class="amenity-desc">Ultra-fast 800 Mbps Wi-Fi with backup generator for remote work & seamless streaming.</p>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🏊</div>
+          <h4 class="amenity-title">Heated Infinity Pool</h4>
+          <p class="amenity-desc">Year-round temperature controlled pool & 6-person hot tub with mountain views.</p>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🍳</div>
+          <h4 class="amenity-title">Chef's Kitchen</h4>
+          <p class="amenity-desc">Fully stocked spices, Italian La Marzocco espresso machine, marble island & wine fridge.</p>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">⚡</div>
+          <h4 class="amenity-title">Tesla & Universal EV Charger</h4>
+          <p class="amenity-desc">Level 2 (40A) fast EV charger free to use for all guests in private driveway.</p>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🔥</div>
+          <h4 class="amenity-title">Outdoor Fire Pit</h4>
+          <p class="amenity-desc">Cozy gas fire table with comfortable seating, string lights & firewood provided.</p>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🐕</div>
+          <h4 class="amenity-title">Pet Friendly (On Request)</h4>
+          <p class="amenity-desc">Fenced yard, dog bed, food bowls & nearby dog-friendly hiking trails.</p>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🧺</div>
+          <h4 class="amenity-title">Washer & Dryer</h4>
+          <p class="amenity-desc">Full-size Samsung steam washer/dryer with eco laundry detergent provided.</p>
+        </div>
+
+        <div class="amenity-card">
+          <div class="amenity-icon">🖥️</div>
+          <h4 class="amenity-title">Dedicated Workstation</h4>
+          <p class="amenity-desc">Ergonomic desk, 27" 4K monitor, Herman Miller chair in quiet master study.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Attractions Guide -->
+  <section class="section-padding" id="guide">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="section-tag">Local Insider Recommendations</span>
+        <h2 class="section-title">Places of Interest Nearby</h2>
+        <p class="section-subtitle" style="margin: 0 auto 3rem;">We love our neighborhood! Here are our favorite local spots curated specifically for our guests.</p>
+      </div>
+
+      <div class="guide-layout">
+        <div class="attraction-list">
+          <div class="attraction-card">
+            <div class="attraction-icon">🏖️</div>
+            <div class="attraction-info">
+              <h4>Emerald Bay Beach & Cove</h4>
+              <p>Pristine swimming beach, kayak rentals & paddleboarding.</p>
+            </div>
+            <span class="distance-pill">0.4 Miles</span>
+          </div>
+
+          <div class="attraction-card">
+            <div class="attraction-icon">☕</div>
+            <div class="attraction-info">
+              <h4>Pinecrest Artisan Coffee Roasters</h4>
+              <p>Fresh organic pastries, single-origin espresso & outdoor seating.</p>
+            </div>
+            <span class="distance-pill">0.8 Miles</span>
+          </div>
+
+          <div class="attraction-card">
+            <div class="attraction-icon">🥾</div>
+            <div class="attraction-info">
+              <h4>Eagle Ridge Mountain Summit Trail</h4>
+              <p>3.2 mile loop hike with panoramic coastal sunset views.</p>
+            </div>
+            <span class="distance-pill">1.2 Miles</span>
+          </div>
+
+          <div class="attraction-card">
+            <div class="attraction-icon">🍷</div>
+            <div class="attraction-info">
+              <h4>Willow Creek Vineyard & Bistro</h4>
+              <p>Local wine tasting flights, charcuterie boards & live acoustic music.</p>
+            </div>
+            <span class="distance-pill">2.5 Miles</span>
+          </div>
+
+          <div class="attraction-card">
+            <div class="attraction-icon">🛒</div>
+            <div class="attraction-info">
+              <h4>Whole Foods Market & Organic Grocer</h4>
+              <p>Stock up on gourmet groceries, wine, fresh produce & ready meals.</p>
+            </div>
+            <span class="distance-pill">3.0 Miles</span>
+          </div>
+        </div>
+
+        <div class="map-visual-card">
+          <img src="images/attraction.jpg" alt="Nearby Attractions Map & View">
+          <div class="map-pin-badge">
+            <span>📍 Pinecrest Haven Villa (You are here)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verified Airbnb Reviews & Testimonials -->
+  <section class="section-padding" id="reviews" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div style="text-align: center;">
+        <span class="section-tag">Verified Guest Feedback</span>
+        <h2 class="section-title">Loved by Airbnb Guests & Repeat Visitors</h2>
+        <p class="section-subtitle" style="margin: 0 auto 3rem;">Rated 4.98 out of 5 stars based on 42+ verified guest stays.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Pinecrest Haven exceeded all expectations! The photos don't even do justice to how magnificent the view is at sunset. The kitchen was fully equipped and Marcus was incredibly responsive."</p>
+          </div>
+          <div class="reviewer">
+            <div class="avatar" style="width: 36px; height: 36px; font-size: 0.9rem;">EM</div>
+            <div>
+              <div class="reviewer-name">Emily & Michael S.</div>
+              <div class="reviewer-meta">Airbnb Guest • Stayed July 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"We have stayed twice now — once through Airbnb and now directly using their website. Booking direct was so seamless, saved us almost $200 in platform fees, and Sarah had fresh coffee waiting!"</p>
+          </div>
+          <div class="reviewer">
+            <div class="avatar" style="width: 36px; height: 36px; font-size: 0.9rem; background: var(--brand-gold);">DR</div>
+            <div>
+              <div class="reviewer-name">David R. (Repeat Guest)</div>
+              <div class="reviewer-meta">Direct Booking • Stayed June 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Flawless stay for our family reunion. High-speed internet made remote work easy while the kids enjoyed the pool every day. Will definitely recommend to friends!"</p>
+          </div>
+          <div class="reviewer">
+            <div class="avatar" style="width: 36px; height: 36px; font-size: 0.9rem;">TH</div>
+            <div>
+              <div class="reviewer-name">The Henderson Family</div>
+              <div class="reviewer-meta">Airbnb Guest • Stayed May 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Host Bio & Direct Contact Footer -->
+  <footer class="footer-cta" id="contact">
+    <div class="container">
+      <div class="host-card">
+        <div class="host-photo-wrapper">
+          <div class="host-photo">PH</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.2rem;">Sarah & Marcus</h3>
+          <p style="color: var(--text-secondary); font-size: 0.85rem;">Property Hosts & Owners</p>
+        </div>
+
+        <div>
+          <span class="section-tag" style="margin-bottom: 0.5rem;">Have Questions?</span>
+          <h2 style="font-size: 1.8rem; margin-bottom: 0.75rem;">Direct Host Contact</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+            Got custom date requests, questions about bringing pets, or planning a family event? Reach out to us directly — we respond within an hour!
+          </p>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://wa.me/15550192837?text=Hi%20Sarah%20%26%20Marcus!%20I'd%20like%20to%20inquire%20about%20staying%20at%20Pinecrest%20Haven." target="_blank" class="whatsapp-btn">
+              💬 Message on WhatsApp
+            </a>
+            <a href="mailto:stay@pinecresthaven.com" class="btn-secondary" style="padding: 0.85rem 1.5rem;">
+              ✉️ Email Hosts
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Pinecrest Haven Villa. All rights reserved. | Independent Direct Booking Portal for Friends & Family.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-content">
+      <span class="lightbox-close" id="lightboxClose">&times;</span>
+      <img id="lightboxImg" src="" alt="Enlarged Showcase Photo">
+      <div id="lightboxCaption" style="color: white; margin-top: 1rem; text-align: center;"></div>
+    </div>
+  </div>
+
+  <!-- Direct Inquiry Confirmation Modal -->
+  <div class="modal-backdrop" id="confirmationModal">
+    <div class="modal-box">
+      <span class="modal-close" onclick="closeConfirmationModal()">&times;</span>
+      <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--brand-accent);">🎉 Inquiry Ready to Send!</h3>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">
+        Your reservation request and estimated direct rate have been calculated. Click below to message Sarah & Marcus directly.
+      </p>
+      <div id="inquiryDetails"></div>
+    </div>
+  </div>
+
+  <!-- Client iCal Integration Setup Modal -->
+  <div class="modal-backdrop" id="icalGuideModal">
+    <div class="modal-box" style="max-width: 650px;">
+      <span class="modal-close" onclick="closeICalGuideModal()">&times;</span>
+      <h3 style="font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--brand-accent);">⚙️ Client Guide: How Airbnb iCal Sync Works</h3>
+      <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; text-align: left; max-height: 60vh; overflow-y: auto; padding-right: 0.5rem;">
+        <p style="margin-bottom: 1rem;"><strong>1. Where to find your Airbnb iCal Export URL:</strong><br>
+        In your Airbnb Host Dashboard, go to: <em>Listings ➔ Select Listing ➔ Pricing and Availability ➔ Calendar Sync ➔ Export Calendar</em>. Copy the <code>.ics</code> feed link.</p>
+        
+        <p style="margin-bottom: 1rem;"><strong>2. Linking with Google Calendar:</strong><br>
+        In Google Calendar, click <em>Other calendars + ➔ From URL</em> and paste your Airbnb <code>.ics</code> link. Name it <code>Airbnb Availability</code>.</p>
+        
+        <p style="margin-bottom: 1rem;"><strong>3. Website Live Sync:</strong><br>
+        This website periodically fetches your iCal feed URL to automatically block out reserved dates in real-time without manual updates!</p>
+      </div>
+      <div style="margin-top: 1.5rem; text-align: right;">
+        <button onclick="closeICalGuideModal()" class="btn-primary">Got it!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
